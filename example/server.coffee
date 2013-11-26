@@ -13,7 +13,7 @@ codes = fs.readFileSync('./data/zipcode.csv').toString()
 app.get '/zip-to-it.js', (req, res) ->
     res.send zip
 
-app.get '/zipcodes.csv', (req, res) ->
+app.get '/zipcode.csv', (req, res) ->
     res.send codes
 
 app.listen 3000

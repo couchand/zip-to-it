@@ -17,7 +17,7 @@ class Zip
       .key((d) -> d.zip[0...3])
       .key((d) -> d.zip[0...4])
       .key((d) -> d.zip[0...5])
-    d3.csv 'zipcodes.csv', (zipcodes) ->
+    d3.csv 'zipcode.csv', (zipcodes) ->
       partials = {}
       zipcodes = zipcodes.filter (d) -> d.zip.trim()
       nested = t.nest.entries zipcodes

@@ -37,7 +37,7 @@
       }).key(function(d) {
         return d.zip.slice(0, 5);
       });
-      d3.csv('zipcodes.csv', function(zipcodes) {
+      d3.csv('zipcode.csv', function(zipcodes) {
         var nested, partial, partials, values, _results;
 
         partials = {};
