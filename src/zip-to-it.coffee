@@ -10,6 +10,7 @@ computeCentroid = (zips) ->
 class Zip
   constructor: ->
     t = @
+    @codes = {}
     @nest = d3.nest()
       .key((d) -> d.zip[0...1])
       .key((d) -> d.zip[0...2])
@@ -30,6 +31,7 @@ class Zip
               partials[fourth.key] = []
               fourth.values.forEach (fifth) ->
                 z = fifth.values[0]
+                t.codes[fifth.key] = z
                 partials[fifth.key] = [z]
                 partials[fourth.key].push z
                 partials[third.key].push z
@@ -41,6 +43,9 @@ class Zip
 
   to: (partial) ->
     @partials[partial]
+
+  code: (code) ->
+    @codes[code]
 
   from: (lat, lon) ->
     throw 'up'
