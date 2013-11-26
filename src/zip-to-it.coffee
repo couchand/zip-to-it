@@ -2,10 +2,10 @@
 #   a partial zip code locator
 #   use me to build a responsive absolute map search for the u.s.
 
-computeCentroid = (zips) ->
+window.computeCentroid = (zips) ->
   d3.geo.centroid
     type: "MultiPoint"
-    coordinates: ([z.latitude, z.longitude] for z in zips)
+    coordinates: ([z.longitude, z.latitude] for z in zips)
 
 class Zip
   constructor: ->
