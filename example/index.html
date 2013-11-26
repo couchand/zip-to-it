@@ -5,25 +5,44 @@
     <style type="text/css">
       html { height: 100% }
       body { height: 100%; margin: 0; padding: 0 }
-      #map-canvas { height: 100% }
+      #search-box { height: 10% }
+      #map-canvas { height: 90% }
+      #search-box > input {
+        height: 100%;
+        width: 100%;
+        margin: 0 40px;
+        border: none;
+      }
     </style>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=API_KEY&sensor=false">
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE51nheVwMY3HS3zBzCBN--llXPmJ01JY&sensor=false">
     </script>
     <script type="text/javascript" src="d3.min.js"></script>
     <script type="text/javascript" src="zip-to-it.js"></script>
     <script type="text/javascript">
+      var map;
+
+      function zip(input) {
+        z = Zip.to(input.value);
+        if (!z) return;
+        ll = new google.maps.LatLng(z[1], z[0], true);
+        map.panTo(ll);
+      }
+
       function initialize() {
         var mapOptions = {
           center: new google.maps.LatLng(-34.397, 150.644),
           zoom: 8
         };
-        var map = new google.maps.Map(document.getElementById("map-canvas"),
+        map = new google.maps.Map(document.getElementById("map-canvas"),
             mapOptions);
       }
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
   </head>
   <body>
-    <div id="map-canvas"/>
+    <div id="search-box">
+      <input type="text" placeholder="enter a zip code..." onKeyUp="zip(this);">
+    </div>
+    <div id="map-canvas"></div>
   </body>
 </html>
