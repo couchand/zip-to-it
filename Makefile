@@ -6,4 +6,4 @@ cleanZips:
 
 getZips:
 	curl http://www.boutell.com/zipcodes/zipcode.zip > zipcode.zip
-	unzip zipcode.zip zipcode.csv
+	unzip zipcode.zip zipcode.csv -d data
