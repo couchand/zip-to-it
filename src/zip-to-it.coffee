@@ -3,7 +3,9 @@
 #   use me to build a responsive absolute map search for the u.s.
 
 computeCentroid = (zips) ->
-  zips[0]
+  d3.geo.centroid
+    type: "MultiPoint"
+    coordinates: ([z.latitude, z.longitude] for z in zips)
 
 class Zip
   constructor: ->
