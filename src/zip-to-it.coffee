@@ -2,8 +2,8 @@
 #   a partial zip code locator
 #   use me to build a responsive absolute map search for the u.s.
 
-window.computeCentroid = (zips) ->
-  d3.geo.centroid
+window.computeBounds = (zips) ->
+  d3.geo.bounds
     type: "MultiPoint"
     coordinates: ([z.longitude, z.latitude] for z in zips)
 
@@ -39,7 +39,7 @@ class Zip
                 partials[first.key].push z
       t.partials = {}
       for partial, values of partials
-        t.partials[partial] = computeCentroid values
+        t.partials[partial] = computeBounds values
 
   to: (partial) ->
     @partials[partial]
