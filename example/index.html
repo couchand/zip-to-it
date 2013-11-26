@@ -22,20 +22,26 @@
       var map;
 
       function zip(input) {
-        z = Zip.to(input.value);
-        if (!z) return;
-        sw = new google.maps.LatLng(z[0][1], z[0][0]);
-        ne = new google.maps.LatLng(z[1][1], z[1][0]);
+        var sw, ne, z = Zip.to(input.value);
+        if (!!z) {
+          sw = new google.maps.LatLng(z[0][1], z[0][0]);
+          ne = new google.maps.LatLng(z[1][1], z[1][0]);
+        }
+        else {
+          sw = new google.maps.LatLng(28, -176);
+          ne = new google.maps.LatLng(62, -59);
+        }
         map.fitBounds(new google.maps.LatLngBounds(sw, ne));
       }
 
       function initialize() {
         var mapOptions = {
-          center: new google.maps.LatLng(-34.397, 150.644),
+          center: new google.maps.LatLng(42, -93),
           zoom: 8
         };
         map = new google.maps.Map(document.getElementById("map-canvas"),
             mapOptions);
+        zip({ value: '' });
       }
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
