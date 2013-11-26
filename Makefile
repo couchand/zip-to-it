@@ -4,9 +4,13 @@ clean: cleanZips
 cleanZips:
 	rm -f zipcode.zip
 
-getZips:
+getZips: data/zipcode.csv
+
+zipcode.zip:
 	curl http://www.boutell.com/zipcodes/zipcode.zip > zipcode.zip
-	unzip zipcode.zip zipcode.csv -d data
+
+data/zipcode.csv: zipcode.zip
+	unzip -Du zipcode.zip zipcode.csv -d data
 
 compile: zip-to-it.js
 
