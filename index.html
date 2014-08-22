@@ -24,6 +24,7 @@
       function zip(input) {
         var sw, ne, z = Zip.to(input.value);
         if (!!z) {
+          ga('send', 'event', 'input', 'search', 'zip', input);
           sw = new google.maps.LatLng(z[0][1], z[0][0]);
           ne = new google.maps.LatLng(z[1][1], z[1][0]);
         }
